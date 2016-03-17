@@ -8,8 +8,8 @@ public class BackgroundManager : MonoBehaviour {
 
     [SerializeField] private Background[]   background;
     [SerializeField] private float          speed;
-    [SerializeField] private float          move_pos;
-    [SerializeField] private float          move_dis;
+    private float                           move_pos;
+    private float                           move_dis;
 
 	// Use this for initialization
 	void Awake ()
