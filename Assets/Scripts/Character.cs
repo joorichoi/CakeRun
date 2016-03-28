@@ -12,6 +12,7 @@ public class Character : MonoBehaviour {
     private int             jump_count;
     private bool            grounded;
     private bool            is_rideroap;
+    private bool            isOnMouseDown;
 
     [SerializeField]private float     jump_force;
     [SerializeField]private Transform check_ground;
@@ -24,8 +25,8 @@ public class Character : MonoBehaviour {
         my_rig = GetComponent<Rigidbody2D>();
         my_animator = GetComponent<Animator>();
         is_rideroap = false;
-        jump_count = 2;
-        
+        isOnMouseDown = false;
+        jump_count = 2;  
 	}
 	
 	// Update is called once per frame
@@ -37,6 +38,14 @@ public class Character : MonoBehaviour {
             jump_count = 2;
             character_state = Character_State.RUN;
             my_animator.SetBool("is_jump",false);
+            my_animator.SetBool("is_doublejump",false);
+        }
+
+        if (is_rideroap && !isOnMouseDown)
+        {
+            my_rig.gravityScale = 2.5f;
+            my_rig.AddForce(Vector2.down * jump_force);
+            is_rideroap = false;
         }
 	}
 
@@ -45,10 +54,14 @@ public class Character : MonoBehaviour {
     {
         if(jump_count>0)
         {
+            isOnMouseDown = true;
             jump_count--;
             my_rig.AddForce(Vector2.up * jump_force);
             character_state = Character_State.JUMP;
-            my_animator.SetBool("is_jump", true);
+            if(jump_count==1)
+                my_animator.SetBool("is_jump", true);
+            else if(jump_count==0)
+                my_animator.SetBool("is_doublejump",true);                
         }
     }
 
@@ -67,6 +80,7 @@ public class Character : MonoBehaviour {
             is_rideroap = true;
         }
     }
+
     void OnTriggerExit2D(Collider2D col)
     {
         if(col.CompareTag("Roap"))
@@ -77,7 +91,9 @@ public class Character : MonoBehaviour {
 
     public void leave_roap()
     {
-        if(is_rideroap)
+        isOnMouseDown = false;
+
+        if (is_rideroap)
         {
             my_rig.gravityScale = 2.5f;
             my_rig.AddForce(Vector2.down * jump_force);
