@@ -34,12 +34,11 @@ public class Character : MonoBehaviour {
 
 	    grounded =Physics2D.OverlapCircle(check_ground.position, 0.1f, 1 << LayerMask.NameToLayer("Ground"));
 
-        if(grounded && my_rig.velocity.y <= 0)
+        if(grounded && my_rig.velocity.y < 0)
         {
-            jump_count = 2;
-            character_state = Character_State.RUN;
+            jump_count=2;
             my_animator.SetBool("is_jump",false);
-            my_animator.SetBool("is_doublejump",false); 
+            my_animator.SetBool("is_doublejump",false);        
         }
 
         if (is_rideroap && !isOnMouseDown)
@@ -53,14 +52,15 @@ public class Character : MonoBehaviour {
     {
         if(jump_count>0)
         {
-            isOnMouseDown = true;
+            isOnMouseDown = true; 
             jump_count--;
             my_rig.AddForce(Vector2.up * jump_force);
             character_state = Character_State.JUMP;
             if(jump_count==1)
                 my_animator.SetBool("is_jump", true);
             else if(jump_count==0)
-                my_animator.SetBool("is_doublejump",true);                
+                my_animator.SetBool("is_doublejump",true); 
+                        
         }
     }
 
