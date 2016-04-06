@@ -4,10 +4,14 @@ using System.Collections;
 public class Line : MonoBehaviour {
 
 
+    private bool is_ringenter;
+    private bool is_clicked;
+    private Transform ring_transform;
 
 	// Use this for initialization
 	void Awake () {
-	
+	    is_ringenter = false;
+        is_clicked = false;
 	}
 	
 	// Update is called once per frame
@@ -19,7 +23,37 @@ public class Line : MonoBehaviour {
     {
         if(col.CompareTag("Ring"))
         {
-            col.GetComponent<Ring>().Get_RingEnter = true;
+            is_ringenter = true;
+        }
+    }
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if(col.CompareTag("Ring"))
+        {
+            if(is_clicked)
+            {
+                 if(col.transform.position.x<=-7.7f && col.transform.position.x>=-8.2f)
+                {
+                    Debug.Log("Perfect!");
+                }
+                else
+                {
+                    Debug.Log("Cool!");
+                }
+
+                Destroy(col.gameObject);
+                is_clicked = false;
+            }
+    
+        }
+   
+    }
+    public void Decide_Score()
+    {
+        if(is_ringenter)
+        {
+            is_clicked = true;
+           
         }
     }
 
@@ -28,7 +62,7 @@ public class Line : MonoBehaviour {
         if(col.CompareTag("Ring"))
         {
             Debug.Log("Miss");
-            col.GetComponent<Ring>().Get_RingEnter = false;
+            is_ringenter = false;
         }
     }
 }

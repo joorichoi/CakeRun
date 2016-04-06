@@ -32,7 +32,7 @@ public class Character : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	    grounded =Physics2D.OverlapCircle(check_ground.position, 0.1f, 1 << LayerMask.NameToLayer("Ground"));
+	    grounded =Physics2D.OverlapCircle(check_ground.position, 0.5f, 1 << LayerMask.NameToLayer("Ground"));
 
         if(grounded && my_rig.velocity.y < 0)
         {
@@ -54,6 +54,7 @@ public class Character : MonoBehaviour {
         {
             isOnMouseDown = true; 
             jump_count--;
+            my_rig.velocity = Vector2.zero;
             my_rig.AddForce(Vector2.up * jump_force);
             character_state = Character_State.JUMP;
             if(jump_count==1)
@@ -83,7 +84,7 @@ public class Character : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if(col.CompareTag("Roap"))
+        if (col.CompareTag("Roap"))
         {
             leave_roap();
         }
