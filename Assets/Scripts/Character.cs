@@ -102,7 +102,7 @@ public class Character : MonoBehaviour {
 
     void AddDownforce()
     {
-         my_rig.gravityScale = 2.5f;
+         my_rig.gravityScale = 2.0f;
          my_rig.AddForce(Vector2.down * jump_force);
          is_rideroap = false;
          my_animator.SetBool("is_roap",false); 

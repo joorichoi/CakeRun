@@ -34,10 +34,12 @@ public class Line : MonoBehaviour {
             {
                  if(col.transform.position.x<=-7.7f && col.transform.position.x>=-8.2f)
                 {
+                    ObjectManager.Instance.Grade_SetActiveTrue(0);
                     Debug.Log("Perfect!");
                 }
                 else
                 {
+                    ObjectManager.Instance.Grade_SetActiveTrue(1);
                     Debug.Log("Cool!");
                 }
 
@@ -62,7 +64,9 @@ public class Line : MonoBehaviour {
         if(col.CompareTag("Ring"))
         {
             Debug.Log("Miss");
+            ObjectManager.Instance.Grade_SetActiveTrue(2);
             is_ringenter = false;
+            
         }
     }
 }
