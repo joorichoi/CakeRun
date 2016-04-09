@@ -1,0 +1,140 @@
+fileFormatVersion: 2
+guid: fa86ad5f9fd2c2d4bb85a301bcce5d7f
+timeCreated: 1460065578
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Donut_Rope_0
+    21300002: Donut_Rope_1
+    21300004: Donut_Rope_2
+    21300006: Donut_Rope_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Donut_Rope_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 130
+        height: 130
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 128}
+        - {x: -36, y: 128}
+        - {x: -59, y: 91}
+        - {x: -59, y: 22}
+        - {x: -51, y: 0}
+        - {x: 54, y: 0}
+        - {x: 57, y: 27}
+        - {x: 57, y: 122}
+    - name: Donut_Rope_1
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 0
+        width: 130
+        height: 130
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45, y: 128}
+        - {x: -59, y: 123}
+        - {x: -59, y: 5}
+        - {x: -57, y: 0}
+        - {x: 57, y: 0}
+        - {x: 57, y: 115}
+        - {x: 52, y: 128}
+    - name: Donut_Rope_2
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 0
+        width: 130
+        height: 130
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 34, y: 128}
+        - {x: 32, y: 122}
+        - {x: 13, y: 127}
+        - {x: -26, y: 125}
+        - {x: -56, y: 93}
+        - {x: -59, y: 70}
+        - {x: -59, y: 48}
+        - {x: -52, y: 33}
+        - {x: -28, y: 0}
+        - {x: 7, y: 0}
+        - {x: 57, y: 4}
+        - {x: 57, y: 102}
+        - {x: 53, y: 128}
+    - name: Donut_Rope_3
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 0
+        width: 130
+        height: 130
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45, y: 128}
+        - {x: -59, y: 123}
+        - {x: -59, y: 5}
+        - {x: -57, y: 0}
+        - {x: 57, y: 0}
+        - {x: 57, y: 115}
+        - {x: 52, y: 128}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

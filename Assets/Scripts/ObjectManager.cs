@@ -2,15 +2,11 @@
 using System.Collections;
 
 public class ObjectManager : MonoBehaviour {
-
-    private static ObjectManager instance;
-    public static ObjectManager Instance { get {return instance; } }
+    public static ObjectManager Instance { get; private set;}
 
     [SerializeField]private GameObject[] prefab_grade;
 	// Use this for initialization
 	void Awake () {
-	
-        instance = this;
         
 	}
 	
