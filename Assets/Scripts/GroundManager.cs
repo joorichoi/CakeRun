@@ -3,25 +3,38 @@ using System.Collections;
 
 public class GroundManager : MonoBehaviour {
 
-    private static GroundManager instance;
-    public static GroundManager Instance { get { return instance;} }
+    public static GroundManager Instance { get; private set;}
 	
     [SerializeField] private float speed;
-    private float move_pos;
+    private float   move_pos;
+    private bool    is_move;
 
     // Use this for initialization
 
 	void Awake ()
     {
-	    instance = this;
+	    Instance = this;
         move_pos = .0f;
+        is_move = true;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-	    move_pos = speed * Time.smoothDeltaTime;
-        transform.Translate(Vector2.left * move_pos);
-
+        if(is_move)
+	        Move_Ground();
 	}
+
+
+    void Move_Ground()
+    {
+        move_pos = speed * Time.smoothDeltaTime;
+        transform.Translate(Vector2.left * move_pos);
+    }
+
+
+    public bool Set_Move{
+        get { return is_move; }
+        set { is_move = value;}
+    }
 }

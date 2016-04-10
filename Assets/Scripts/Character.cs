@@ -90,6 +90,17 @@ public class Character : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.CompareTag("Obstacle"))
+        {
+            //장애물에 부딪혔을때, 캐릭터 애니메이션 정지 + 바닥 정지 + 노래정지 + Result출력
+            GroundManager.Instance.Set_Move = false;
+            my_animator.SetBool("is_die",true);
+            
+        }
+    }
+
     public void leave_roap()
     {
         isOnMouseDown = false;
