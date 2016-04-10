@@ -80,6 +80,10 @@ public class Character : MonoBehaviour {
             Ride_roap();
             is_rideroap = true;     
         }
+        if(col.CompareTag("Coin"))
+        {
+            
+        }
     }
 
     void OnTriggerExit2D(Collider2D col)

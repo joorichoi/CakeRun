@@ -23,7 +23,7 @@ public class ObjectManager : MonoBehaviour {
 
     public void Grade_SetActiveTrue(int grade_num)
     {
-        grade_check[grade_num].SetActive(true);
+        grade_check[grade_num].SetActive(true);                          
         grade_number = grade_num;
         Invoke("Grade_SetActiveFalse",0.3f);
     }
