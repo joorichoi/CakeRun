@@ -82,7 +82,8 @@ public class Character : MonoBehaviour {
         }
         if(col.CompareTag("Coin"))
         {
-            
+            GameManager.Instance.Get_My_Coin(1);
+            Destroy(col.gameObject);
         }
     }
 

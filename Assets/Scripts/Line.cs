@@ -21,6 +21,7 @@ public class Line : MonoBehaviour {
             is_ringenter = true;
         }
     }
+
     void OnTriggerStay2D(Collider2D col)
     {
         if(col.CompareTag("Ring"))
@@ -28,14 +29,14 @@ public class Line : MonoBehaviour {
             if(is_clicked)
             {
                  if(col.transform.position.x<=-7.7f && col.transform.position.x>=-8.2f)
-                {
-                    ObjectManager.Instance.Grade_SetActiveTrue(0);
-                    Debug.Log("Perfect!");
+                {   //Perfect
+                    GameManager.Instance.Get_My_Score(2);
+                    ObjectManager.Instance.Grade_SetActiveTrue(2);
                 }
-                else
+                else // Cool
                 {
+                    GameManager.Instance.Get_My_Score(1);
                     ObjectManager.Instance.Grade_SetActiveTrue(1);
-                    Debug.Log("Cool!");
                 }
 
                 Destroy(col.gameObject);
@@ -45,6 +46,7 @@ public class Line : MonoBehaviour {
         }
    
     }
+
     public void Decide_Score()
     {
         if(is_ringenter)
@@ -56,10 +58,9 @@ public class Line : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if(col.CompareTag("Ring"))
+        if(col.CompareTag("Ring")) // Miss
         {
-            Debug.Log("Miss");
-            ObjectManager.Instance.Grade_SetActiveTrue(2);
+            ObjectManager.Instance.Grade_SetActiveTrue(0);
             is_ringenter = false;
             
         }
