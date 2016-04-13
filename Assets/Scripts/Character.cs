@@ -41,6 +41,11 @@ public class Character : MonoBehaviour {
             my_animator.SetBool("is_doublejump",false);        
         }
 
+        if(my_transform.position.y <=-4.0f)
+        {
+            Character_Die();
+            Debug.Log("Fall_Die");
+        }
         if (is_rideroap && !isOnMouseDown)
         {
             AddDownforce();
@@ -100,9 +105,27 @@ public class Character : MonoBehaviour {
         if(col.gameObject.CompareTag("Obstacle"))
         {
             //장애물에 부딪혔을때, 캐릭터 애니메이션 정지 + 바닥 정지 + 노래정지 + Result출력
-            GroundManager.Instance.Set_Move = false;
-            my_animator.SetBool("is_die",true);
+            Character_Die();
             
+        }
+    }
+
+    
+    void AddDownforce()
+    {
+         my_rig.gravityScale = 2.0f;
+         my_rig.AddForce(Vector2.down * jump_force);
+         is_rideroap = false;
+         my_animator.SetBool("is_roap",false); 
+    }
+
+    void Character_Die()
+    {
+        if (!my_animator.GetBool("is_die"))
+        {
+            SoundManager.Instace.PlayGame_Over();
+            GroundManager.Instance.Set_Move = false;
+            my_animator.SetBool("is_die", true);
         }
     }
 
@@ -116,12 +139,5 @@ public class Character : MonoBehaviour {
         }
     }
 
-    void AddDownforce()
-    {
-         my_rig.gravityScale = 2.0f;
-         my_rig.AddForce(Vector2.down * jump_force);
-         is_rideroap = false;
-         my_animator.SetBool("is_roap",false); 
-    }
 
 }
