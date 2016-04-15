@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,11 +26,16 @@ public class GameManager : MonoBehaviour
     {
         coin_text.text = my_coin.ToString();
     }
+
     void Change_Score_text()
     {
         score_text.text = my_score.ToString();
     }
     
+    public void BackToMenu()
+    {
+       SceneManager.LoadScene("Before_InGame");
+    }
     public void Get_My_Score(int num)
     {
         score = num * 500;

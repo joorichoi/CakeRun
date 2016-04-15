@@ -63,9 +63,15 @@ public class Character : MonoBehaviour {
             my_rig.AddForce(Vector2.up * jump_force);
             character_state = Character_State.JUMP;
             if(jump_count==1)
+            {
+                SoundManager.Instace.PlayJumpSound();
                 my_animator.SetBool("is_jump", true);
+            }
             else if(jump_count==0)
-                my_animator.SetBool("is_doublejump",true); 
+            {
+                SoundManager.Instace.PlayJumpSound();
+                my_animator.SetBool("is_doublejump",true);
+            }
                         
         }
     }

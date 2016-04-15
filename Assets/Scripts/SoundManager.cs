@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour {
 
     [SerializeField]private AudioClip gameOverSnd;
     [SerializeField]private AudioClip coinSnd;
+    [SerializeField]private AudioClip jumpSnd;
 
     private AudioSource source;
 	
@@ -28,6 +29,10 @@ public class SoundManager : MonoBehaviour {
         
     }
 
+    public void PlayJumpSound()
+    {
+        source.PlayOneShot(jumpSnd);
+    }
     public void PlayGame_Over()
     {       
         source.Stop();

@@ -10,6 +10,7 @@ public class ObjectManager : MonoBehaviour {
 
     private int grade_number;
 	// Use this for initialization
+
 	void Awake () {
 
         Instance = this;
