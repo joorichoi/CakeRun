@@ -2,9 +2,7 @@
 using System.Collections;
 
 public class Character : MonoBehaviour {
-    private enum Character_State { RUN=0, JUMP, DOUBLEJUMP, ROAP }
 
-    private Character_State character_state;
     private Transform       my_transform; 
     private Rigidbody2D     my_rig;
     private Animator        my_animator;
@@ -20,7 +18,6 @@ public class Character : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-	    character_state = Character_State.RUN;
         my_transform = GetComponent<Transform>();
         my_rig = GetComponent<Rigidbody2D>();
         my_animator = GetComponent<Animator>();
@@ -61,7 +58,6 @@ public class Character : MonoBehaviour {
             jump_count--;
             my_rig.velocity = Vector2.zero;
             my_rig.AddForce(Vector2.up * jump_force);
-            character_state = Character_State.JUMP;
             if(jump_count==1)
             {
                 SoundManager.Instace.PlayJumpSound();
@@ -80,7 +76,6 @@ public class Character : MonoBehaviour {
     {
         my_rig.gravityScale = 0.0f;
         my_rig.velocity = Vector2.zero;
-        character_state = Character_State.ROAP;
     }
 
     void OnTriggerEnter2D(Collider2D col)

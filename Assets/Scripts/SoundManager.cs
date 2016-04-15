@@ -5,9 +5,11 @@ public class SoundManager : MonoBehaviour {
     
     public static SoundManager Instace { get; private set;}
 
-    [SerializeField]private AudioClip gameOverSnd;
-    [SerializeField]private AudioClip coinSnd;
-    [SerializeField]private AudioClip jumpSnd;
+    [SerializeField]private AudioClip   gameOverSnd;
+    [SerializeField]private AudioClip   coinSnd;
+    [SerializeField]private AudioClip   jumpSnd;
+    [SerializeField]private AudioClip   clickSnd;
+    [SerializeField]private float       musicDelaySec;
 
     private AudioSource source;
 	
@@ -15,7 +17,7 @@ public class SoundManager : MonoBehaviour {
     {
         Instace = this;
         source = GetComponent<AudioSource>();
-        Invoke("PlayBackGround",3.0f);
+        Invoke("PlayBackGround",musicDelaySec);
     }
 
     void PlayBackGround()
@@ -32,6 +34,10 @@ public class SoundManager : MonoBehaviour {
     public void PlayJumpSound()
     {
         source.PlayOneShot(jumpSnd);
+    }
+    public void PlayClickSound()
+    {
+        source.PlayOneShot(clickSnd);
     }
     public void PlayGame_Over()
     {       
