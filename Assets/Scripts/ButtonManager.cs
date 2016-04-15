@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour {
 
     public static ButtonManager Instance {get; private set; }
-    
+ 
     private int characterNumber;
     // Use this for initialization
 	void Awake() {
@@ -39,6 +39,16 @@ public class ButtonManager : MonoBehaviour {
             characterNumber++;
             transform.GetChild(characterNumber).gameObject.SetActive(true);
         }
+    }
+
+    public void HowToPlayActiveTrue()
+    {
+        transform.FindChild("HowToPlayGame").gameObject.SetActive(true);
+    }
+
+    public void HowToPlayActiveFalse()
+    {
+        transform.FindChild("HowToPlayGame").gameObject.SetActive(false);
     }
 
 }
