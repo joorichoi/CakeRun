@@ -5,8 +5,9 @@ public class ObjectManager : MonoBehaviour {
 
     public static ObjectManager Instance { get; private set;}
 
+    [SerializeField] private string[] tagName;
 
-    [SerializeField] private GameObject[] grade_check;
+    private GameObject[] grade_check;
 
     private int grade_number;
 	// Use this for initialization
@@ -15,10 +16,17 @@ public class ObjectManager : MonoBehaviour {
 
         Instance = this;
 
-        for(int i=0;i< grade_check.Length;i++)
+        grade_check = new GameObject[tagName.Length];
+        for (int i = 0; i < tagName.Length; i++)
+        {
+            grade_check[i] = GameObject.FindWithTag(tagName[i]);
+        }
+
+        for (int i = 0; i < grade_check.Length; i++)
         {
             grade_check[i].SetActive(false);
         }
+
         grade_number = 0;
 	}
 

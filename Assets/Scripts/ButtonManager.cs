@@ -12,6 +12,7 @@ public class ButtonManager : MonoBehaviour {
 	
         Instance = this;
         characterNumber = 0;
+        CharacterSelect.charcterNumber = characterNumber;
         this.transform.GetChild(characterNumber).gameObject.SetActive(true);
 	}
 
@@ -27,6 +28,7 @@ public class ButtonManager : MonoBehaviour {
         {
             transform.GetChild(characterNumber).gameObject.SetActive(false);
             characterNumber--;
+            CharacterSelect.charcterNumber = characterNumber;
             transform.GetChild(characterNumber).gameObject.SetActive(true);
         }
     }
@@ -36,7 +38,8 @@ public class ButtonManager : MonoBehaviour {
         if(characterNumber<2)
         {
             transform.GetChild(characterNumber).gameObject.SetActive(false);
-            characterNumber++;
+            characterNumber++;         
+            CharacterSelect.charcterNumber = characterNumber;
             transform.GetChild(characterNumber).gameObject.SetActive(true);
         }
     }

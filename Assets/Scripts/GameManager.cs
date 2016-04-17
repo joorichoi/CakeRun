@@ -7,8 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set;}
 
-    [SerializeField] private Text coin_text;
-    [SerializeField] private Text score_text;
+    [SerializeField] private Text           coin_text;
+    [SerializeField] private Text           score_text;
+    [SerializeField] private Character[]   character_pre;
+    
+    
+    private Character myCharacter;
     private int     my_score;
     private int     my_coin;
     private int     score;
@@ -20,8 +24,16 @@ public class GameManager : MonoBehaviour
         my_coin     = 0;
         score       = 0;
 	    Instance    = this;
+        CreateMyCharacter();
+
 	}
 
+
+    void CreateMyCharacter()
+    {
+        myCharacter = Instantiate(character_pre[CharacterSelect.charcterNumber]) as Character;
+        myCharacter.name = "MyCharacter";
+    }
     void Change_Coin_text()
     {
         coin_text.text = my_coin.ToString();

@@ -12,9 +12,9 @@ public class Character : MonoBehaviour {
     private bool            is_rideroap;
     private bool            isOnMouseDown;
 
-    [SerializeField]private float     jump_force;
-    [SerializeField]private Transform check_ground;
-    [SerializeField]private LayerMask ground;
+    [SerializeField]private float       jump_force;
+    [SerializeField]private Transform   check_ground;
+    [SerializeField]private LayerMask   ground;
 
 	// Use this for initialization
 	void Awake () {
@@ -42,6 +42,7 @@ public class Character : MonoBehaviour {
         {
             Character_Die();
             Debug.Log("Fall_Die");
+            GravityZero();
         }
         if (is_rideroap && !isOnMouseDown)
         {
@@ -72,7 +73,7 @@ public class Character : MonoBehaviour {
         }
     }
 
-    private void Ride_roap()
+    private void GravityZero()
     {
         my_rig.gravityScale = 0.0f;
         my_rig.velocity = Vector2.zero;
@@ -83,7 +84,7 @@ public class Character : MonoBehaviour {
         if(col.CompareTag("Roap"))
         {
             my_animator.SetBool("is_roap",true); 
-            Ride_roap();
+            GravityZero();
             is_rideroap = true;     
         }
         if(col.CompareTag("Coin"))
