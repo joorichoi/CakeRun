@@ -54,6 +54,13 @@ public class Character : MonoBehaviour {
         {
             AddDownforce();
         }
+
+
+        if(!isAlive)
+        {
+            GameObject.Find("Canvas").transform.FindChild("Result").gameObject.SetActive(true);
+            GameManager.Instance.ChangeResult();
+        }
 	}
 
 

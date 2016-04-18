@@ -25,7 +25,11 @@ public class GroundManager : MonoBehaviour {
 	        Move_Ground();
 
         if(transform.position.x<=-260.0f)
+        {
             is_move = false;
+            GameObject.Find("Canvas").transform.FindChild("Result").gameObject.SetActive(true);
+            GameManager.Instance.ChangeResult();
+        }
 	}
 
 
