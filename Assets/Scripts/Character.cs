@@ -11,6 +11,7 @@ public class Character : MonoBehaviour {
     private bool            grounded;
     private bool            is_rideroap;
     private bool            isOnMouseDown;
+    private bool            isAlive;
 
     [SerializeField]private float       jump_force;
     [SerializeField]private Transform   check_ground;
@@ -23,6 +24,7 @@ public class Character : MonoBehaviour {
         my_animator = GetComponent<Animator>();
         is_rideroap = false;
         isOnMouseDown = false;
+        isAlive = true;
         jump_count = 2;  
 	}
 	
@@ -41,7 +43,11 @@ public class Character : MonoBehaviour {
         if(my_transform.position.y <=-4.0f)
         {
             Character_Die();
-            Debug.Log("Fall_Die");
+            GravityZero();
+        }
+        if(my_transform.position.x <=-11.0f)
+        {
+            Character_Die();
             GravityZero();
         }
         if (is_rideroap && !isOnMouseDown)
@@ -53,23 +59,26 @@ public class Character : MonoBehaviour {
 
     public void Jump()
     {
-        if(jump_count>0)
+        if(isAlive)
         {
-            isOnMouseDown = true; 
-            jump_count--;
-            my_rig.velocity = Vector2.zero;
-            my_rig.AddForce(Vector2.up * jump_force);
-            if(jump_count==1)
+            if(jump_count>0)
             {
-                SoundManager.Instace.PlayJumpSound();
-                my_animator.SetBool("is_jump", true);
-            }
-            else if(jump_count==0)
-            {
-                SoundManager.Instace.PlayJumpSound();
-                my_animator.SetBool("is_doublejump",true);
-            }
+                isOnMouseDown = true; 
+                jump_count--;
+                my_rig.velocity = Vector2.zero;
+                my_rig.AddForce(Vector2.up * jump_force);
+                if(jump_count==1)
+                {
+                    SoundManager.Instace.PlayJumpSound();
+                    my_animator.SetBool("is_jump", true);
+                }
+                else if(jump_count==0)
+                {
+                    SoundManager.Instace.PlayJumpSound();
+                    my_animator.SetBool("is_doublejump",true);
+                }
                         
+            }
         }
     }
 
@@ -84,11 +93,11 @@ public class Character : MonoBehaviour {
         if(col.CompareTag("Roap"))
         {
             my_animator.SetBool("is_roap",true); 
-            GravityZero();
             is_rideroap = true;     
         }
         if(col.CompareTag("Coin"))
         {
+            SoundManager.Instace.PlayCoinSound();
             GameManager.Instance.Get_My_Coin(1);
             Destroy(col.gameObject);
         }
@@ -99,6 +108,18 @@ public class Character : MonoBehaviour {
         if (col.CompareTag("Roap"))
         {
             leave_roap();
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.CompareTag("Roap") && is_rideroap)
+        {  
+            if (col.transform.position.y - 1 > my_transform.position.y)
+            {
+                GravityZero();
+
+            }
         }
     }
 
@@ -128,6 +149,7 @@ public class Character : MonoBehaviour {
             SoundManager.Instace.PlayGame_Over();
             GroundManager.Instance.Set_Move = false;
             my_animator.SetBool("is_die", true);
+            isAlive = false;
         }
     }
 

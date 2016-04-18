@@ -30,7 +30,10 @@ public class SoundManager : MonoBehaviour {
     {
         
     }
-
+    public void PlayCoinSound()
+    {
+        source.PlayOneShot(coinSnd,0.3f);
+    }
     public void PlayJumpSound()
     {
         source.PlayOneShot(jumpSnd);

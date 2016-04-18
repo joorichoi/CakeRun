@@ -36,12 +36,12 @@ public class GameManager : MonoBehaviour
     }
     void Change_Coin_text()
     {
-        coin_text.text = my_coin.ToString();
+        coin_text.text = string.Concat("X ", my_coin.ToString());
     }
 
     void Change_Score_text()
     {
-        score_text.text = my_score.ToString();
+        score_text.text = string.Concat("Score: ",my_score.ToString());
     }
     
     public void BackToMenu()

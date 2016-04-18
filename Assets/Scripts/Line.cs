@@ -24,6 +24,7 @@ public class Line : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D col)
     {
+        
         if(col.CompareTag("Ring"))
         {
             if(is_clicked)
@@ -38,9 +39,9 @@ public class Line : MonoBehaviour {
                     GameManager.Instance.Get_My_Score(1);
                     ObjectManager.Instance.Grade_SetActiveTrue(1);
                 }
-
-                Destroy(col.gameObject);
                 is_clicked = false;
+                is_ringenter = false;
+                Destroy(col.gameObject);
             }
     
         }

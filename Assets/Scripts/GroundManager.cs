@@ -23,6 +23,9 @@ public class GroundManager : MonoBehaviour {
     {
         if(is_move)
 	        Move_Ground();
+
+        if(transform.position.x<=-260.0f)
+            is_move = false;
 	}
 
 

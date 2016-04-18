@@ -21,7 +21,10 @@ public class ButtonManager : MonoBehaviour {
     {
         SceneManager.LoadScene("InGame_Map01");
     }
-
+    public void ExitTheGame()
+    {
+        Application.Quit();
+    }
     public void ClickLeftCharacterChosen()
     {
         if(characterNumber>0)

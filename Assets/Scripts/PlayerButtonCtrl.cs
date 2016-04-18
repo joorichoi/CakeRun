@@ -3,11 +3,13 @@ using System.Collections;
 
 public class PlayerButtonCtrl : MonoBehaviour {
     [SerializeField] private Line line; 
-
+    
+    private Transform ground;
     private Character selectChar;
 
     void Start()
     {
+        ground = GameObject.Find("GroundManager").transform;
         selectChar = GameObject.FindWithTag("Player").GetComponent<Character>();
     }
 
