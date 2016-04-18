@@ -21,10 +21,12 @@ public class ButtonManager : MonoBehaviour {
     {
         SceneManager.LoadScene("InGame_Map01");
     }
+
     public void ExitTheGame()
     {
         Application.Quit();
     }
+
     public void ClickLeftCharacterChosen()
     {
         if(characterNumber>0)
@@ -34,6 +36,16 @@ public class ButtonManager : MonoBehaviour {
             CharacterSelect.charcterNumber = characterNumber;
             transform.GetChild(characterNumber).gameObject.SetActive(true);
         }
+    }
+
+    public void CreditActiveTrue()
+    {
+        transform.FindChild("Credit_page").gameObject.SetActive(true);
+    }
+
+    public void CreditActiveFalse()
+    {
+        transform.FindChild("Credit_page").gameObject.SetActive(false);
     }
 
     public void ClickRightCharacterChosen()
